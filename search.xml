@@ -4,11 +4,8 @@
     <title>firstPaper</title>
     <url>/2020/12/23/firstPaper/</url>
     <content><![CDATA[<p>As first to write article.</p>
-<p>#About Fanbox<br><a href="https://www.fanbox.cc/">fanbox</a></p>
-<p>##About period</p>
-<p>##About payment</p>
-<p>#About chrome</p>
-]]></content>
+<h1 id="About-Fanbox"><a href="#About-Fanbox" class="headerlink" title="About Fanbox"></a>About Fanbox</h1><p><a href="https://www.fanbox.cc/">fanbox</a></p>
+<h2 id="About-period"><a href="#About-period" class="headerlink" title="About period"></a>About period</h2><h2 id="About-payment"><a href="#About-payment" class="headerlink" title="About payment"></a>About payment</h2><h1 id="About-chrome"><a href="#About-chrome" class="headerlink" title="About chrome"></a>About chrome</h1>]]></content>
       <tags>
         <tag>test</tag>
       </tags>
