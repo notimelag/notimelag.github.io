@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>firstPaper</title>
-    <url>/2020/12/23/firstPaper/</url>
-    <content><![CDATA[<p>As first to write article.</p>
-<h1 id="About-Fanbox"><a href="#About-Fanbox" class="headerlink" title="About Fanbox"></a>About Fanbox</h1><p><a href="https://www.fanbox.cc/">fanbox</a></p>
-<h2 id="About-period"><a href="#About-period" class="headerlink" title="About period"></a>About period</h2><h2 id="About-payment"><a href="#About-payment" class="headerlink" title="About payment"></a>About payment</h2><h1 id="About-chrome"><a href="#About-chrome" class="headerlink" title="About chrome"></a>About chrome</h1>]]></content>
+    <title>Rename downloading files by chrome plugin</title>
+    <url>/2020/12/24/Rename%20downloading%20files%20by%20chrome%20plugin/</url>
+    <content><![CDATA[<p>Download first picture in checked pictures list.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function startDownload() &#123;</span><br><span class="line">      checkedImages.length &#x3D; 0;</span><br><span class="line">      for (var i &#x3D; 0; i &lt; visibleImages.length; i++) &#123;</span><br><span class="line">        if ($(&#39;#image&#39; + i).hasClass(&#39;checked&#39;)) &#123;</span><br><span class="line">          checkedImages.push(visibleImages[i]);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      ls.image_number &#x3D; 1;</span><br><span class="line">      dlNo &#x3D; 0;</span><br><span class="line">      chrome.downloads.download(&#123; url: checkedImages[dlNo] &#125;);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>When chrome determining filename use the function to change the suggest file name.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">chrome.downloads.onDeterminingFilename.addListener(suggestNewFilename);</span><br></pre></td></tr></table></figure>
+<p>After rename the file, start to download next file so that can number the files in sequence.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function suggestNewFilename(item, suggest) &#123;</span><br><span class="line">    var newFilename &#x3D; &#39;&#39;;</span><br><span class="line">    if(ls.rename_files &#x3D;&#x3D;&#x3D; &#39;true&#39;)&#123;</span><br><span class="line">      var regex &#x3D; &#x2F;(?:\.([^.]+))?$&#x2F;;</span><br><span class="line">      var extension &#x3D; regex.exec(item.filename)[1];</span><br><span class="line">      newFilename +&#x3D; ls.image_number.toString() + &#39;.&#39; + extension;</span><br><span class="line">      ls.image_number++;</span><br><span class="line">    &#125;</span><br><span class="line">    else &#123;</span><br><span class="line">      newFilename +&#x3D; item.filename;</span><br><span class="line">    &#125;</span><br><span class="line">    suggest(&#123; filename: newFilename &#125;);</span><br><span class="line"></span><br><span class="line">    if(dlNo &lt; (checkedImages.length - 1))&#123;</span><br><span class="line">      dlNo+&#x3D;1;</span><br><span class="line">      chrome.downloads.download(&#123; url: checkedImages[dlNo] &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>]]></content>
       <tags>
-        <tag>test</tag>
+        <tag>chrome_plugin</tag>
       </tags>
   </entry>
   <entry>
